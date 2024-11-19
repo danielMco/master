@@ -1,0 +1,38 @@
+== Master Service ==
+The Master Service acts as the orchestrator,
+ distributing tasks to the registered Minion services and aggregating the results.
+
+Key Components:
+Task Management: Manages password-cracking tasks and assigns them to registered Minions.
+Minion Registry: Maintains a list of Minions that have registered with the Master.
+
+Key Endpoints:
+POST /master/registerMinion: Registers a new Minion.
+POST /master/assignTask: Sends a task to a registered Minion.
+POST /master/receiveResult: Receives results from Minions.
+
+Running the Services Locally
+Prerequisites
+Java 17+
+Maven
+
+HOW TO RUN:
+
+1. Clone the master from git
+2. inside the directory run:
+mvn clean install
+mvn spring-boot:run
+3. server started and ready on port 8080
+4. run the minions
+
+5. send http request via postman or Curl:
+curl --location --request POST 'localhost:8080/file/uploadAndCrack?filePath=hashes.txt'
+you can specify any absolute path, I added example in master directory
+
+master using output.txt as output file for cracked password.
+
+
+
+
+
+
